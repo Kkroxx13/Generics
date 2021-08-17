@@ -3,27 +3,35 @@ using System.Collections.Generic;
 
 namespace GenericsUsercase
 {
-    class Program
+   public class PrintArray<T>
     {
-        static void Main(string[] args)
+        private T[] inputArray;
+        public PrintArray(T [] inputArray)
         {
-            int[] intArray = { 1, 2, 3, 4, 5 };
-            double[] doubleArray = { 1.1, 2.2, 3.3, 4.4 };
-            char[] charArray = { 'H', 'E', 'L', 'L', 'O' };
-
-            Program.toPrint<int>(intArray);
-            Console.WriteLine("_____________");
-            Program.toPrint<char>(charArray);
-            Console.WriteLine("_____________");
-            Program.toPrint<double>(doubleArray);
+            this.inputArray = inputArray;
         }
-
-        public static void toPrint<T>(T[] inputArray)
+        public void toPrint()
         {
             foreach(var element in inputArray)
             {
                 Console.WriteLine(element);
             }
+            Console.WriteLine("_____________");
+        }
+    }
+
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] intArray = { 1, 2, 3, 4, 5 };
+            double[] doubleArray = { 1.1, 2.2, 3.3, 4.4 };
+            char[] charArray = { 'H', 'E', 'L', 'L', 'O' };
+
+            new PrintArray<int>(intArray).toPrint();
+            new PrintArray<double>(doubleArray).toPrint();
+            new PrintArray<char>(charArray).toPrint();
+            
         }
     }
 }
